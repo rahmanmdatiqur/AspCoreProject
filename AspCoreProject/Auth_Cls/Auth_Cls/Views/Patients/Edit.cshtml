@@ -1,0 +1,60 @@
+﻿@model Auth_Cls.Models.ViewModel.PatientVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<form asp-action="Edit" enctype="multipart/form-data" method="post">
+    <div class="row">
+        <div class="col-6">
+            <input type="hidden" asp-for="Picture" />
+            <input type="hidden" asp-for="PatientId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PatientName" class="control-label"></label>
+                <input asp-for="PatientName" class="form-control" />
+                <span asp-validation-for="PatientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" type="date" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PictureFile" class="control-label"></label>
+                <input asp-for="PictureFile" class="form-control" />
+                <span asp-validation-for="PictureFile" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MaritialStatus" /> @Html.DisplayNameFor(model => model.MaritialStatus)
+                </label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-primary text-white" id="btnPlus">Add More</a>
+            </div>
+            <div id="diseseContainer">
+                @foreach (var disese in Model.DiseseList)
+                {
+                    <script>
+                        LoadDisese(@disese);
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

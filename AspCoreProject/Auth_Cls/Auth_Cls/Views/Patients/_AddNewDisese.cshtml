@@ -1,0 +1,10 @@
+﻿@model Auth_Cls.Models.Disese
+
+<div class="row form-group mt-2">
+    <div class="col-md-10">
+        @Html.DropDownListFor(x=>x.DiseseId, ViewBag.Diseses as SelectList,"--Select--",htmlAttributes:new{@class="form-control"})
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-danger text-white" id="btnDeleteDisese">Delete</a>
+    </div>
+</div>
